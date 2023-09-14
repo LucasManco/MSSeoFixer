@@ -1,1 +1,13 @@
-<link rel="alternate" hreflang="<?php echo $this->getStoreId(); ?>" href="<?php echo $this->getCurrentUrl() ; ?>">
+<?php
+    
+    $StoreIdList = $this->getStoreIds();
+    if($StoreIdList){
+        $urlList = $this->getUrls($StoreIdList);
+        $cmsPageUrl = $block->getCmsPageUrl();
+
+        foreach($StoreIdList as $key=>$StoreId){
+            echo '<link rel="alternate" hreflang="'.$StoreId.'" href="'.$urlList[$key]. $cmsPageUrl.'">';
+        }
+    }    
+    
+?>
