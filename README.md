@@ -22,17 +22,8 @@ app/code/LucasManco/MSSeoFixer
 ```
 A tag cacheable="false" foi adicionanda para garantir que este bloco não seja cacheado assim atualizando corretamente ao trocar de store-view.
 
-O bloco adicionado é o do arquivo seo.phtml que está abaixo. a váriavel currentUrl traz a url atual da página e o storeId traz o codigo da view que para esta implementação foi definido que será referente ao codigo do idioma da view.
+O arquivo Block/seo.php tem o papel de coletar os dados que serão utilizados pelo phtml para montar o link abaixo
 
 ```
-<?php
-$currentUrl = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
-
-$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
-$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
- 
-$storeId =  $storeManager->getStore()->getCode();
-
-?>
-<link rel="alternate" hreflang="<?php echo $storeId; ?>" href="<?php echo $currentUrl; ?>">
+<link rel="alternate" hreflang="<?php echo $this->getStoreId(); ?>" href="<?php echo $this->getCurrentUrl() ; ?>">
 ```
