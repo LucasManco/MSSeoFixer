@@ -22,8 +22,21 @@ app/code/LucasManco/MSSeoFixer
 ```
 A tag cacheable="false" foi adicionanda para garantir que este bloco não seja cacheado assim atualizando corretamente ao trocar de store-view.
 
-O arquivo Block/seo.php tem o papel de coletar os dados que serão utilizados pelo phtml para montar o link abaixo
+O arquivo Block/seo.php tem o papel de coletar os dados que serão utilizados pelo phtml para montar o link conforme mostra abaixo.
 
 ```
-<link rel="alternate" hreflang="<?php echo $this->getStoreId(); ?>" href="<?php echo $this->getCurrentUrl() ; ?>">
+<?php
+    
+    $StoreIdList = $this->getStoreIds();
+    if($StoreIdList){
+        $urlList = $this->getUrls($StoreIdList);
+        $cmsPageUrl = $block->getCmsPageUrl();
+
+        foreach($StoreIdList as $key=>$StoreId){
+            echo '<link rel="alternate" hreflang="'.$StoreId.'" href="'.$urlList[$key]. $cmsPageUrl.'">';
+        }
+    }    
+    
+?>
 ```
+
