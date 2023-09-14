@@ -2,14 +2,14 @@
 
 Este Modulo magento foi criado com o objetivo de corrigir um problema de rankeamento de SEO causado por paginas CMS compartilhadas entre diferentes store-views no magento.
 
-##Instalação
+## Instalação
 
 Para a instalação, é necessário que o código deste repósitorio esteja corretamente inserido dentro do caminho.
 
 app/code/LucasManco/MSSeoFixer
 
 
-##Modo de Funcionamento
+## Modo de Funcionamento
   O modulo adiciona um novo bloco ao head da página
 
   ```
